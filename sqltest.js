@@ -2,7 +2,7 @@ const sql = require('mssql');
 
 const config = {
 		user: 'powerbi', // better stored in an app setting such as process.env.DB_USER
-		password: 'HowdyStats', // better stored in an app setting such as process.env.DB_PASSWORD
+		password: 'HowdyStats!', // better stored in an app setting such as process.env.DB_PASSWORD
 		server: 'sbrondel.database.windows.net', // better stored in an app setting such as process.env.DB_SERVER
 		port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
 		database: 'howdyscout2024', // better stored in an app setting such as process.env.DB_NAME
@@ -46,32 +46,26 @@ console.log("Starting...");
 connectAndQuery();
 
 async function connectAndQuery() {
-		try {
-				var poolConnection = await sql.connect(config);
+	try {
+			var poolConnection = await sql.connect(config);
 
-				console.log("Reading rows from the Table...");
-				var resultSet = await poolConnection.request().query(`SELECT TOP 20 pc.Name as CategoryName,
-						p.name as ProductName 
-						FROM [SalesLT].[ProductCategory] pc
-						JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid`);
+			console.log("Reading rows from the Table...");
+			var resultSet = await poolConnection.request().query(`
+					SELECT TOP 20 *
+					FROM frc6377MatchScouting
+			`);
 
-				console.log(`${resultSet.recordset.length} rows returned.`);
+			console.log(`${resultSet.recordset.length} rows returned.`);
 
-				// output column headers
-				var columns = "";
-				for (var column in resultSet.recordset.columns) {
-						columns += column + ", ";
-				}
-				console.log("%s\t", columns.substring(0, columns.length - 2));
+			// Output row contents
+			console.log(resultSet.recordset)
 
-				// ouput row contents from default record set
-				resultSet.recordset.forEach(row => {
-						console.log("%s\t%s", row.CategoryName, row.ProductName);
-				});
-
-				// close connection only when we're certain application is finished
-				poolConnection.close();
-		} catch (err) {
-				console.error(err.message);
-		}
+			// Close connection
+			await poolConnection.close();
+	} catch (err) {
+			console.error(err.message);
+	}
 }
+
+// Export the function
+module.exports = connectAndQuery;

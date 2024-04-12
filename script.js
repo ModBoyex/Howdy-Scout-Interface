@@ -38,7 +38,7 @@ async function requestBlueAllianceAPI(url, apiKey) {
 	}
 }
 
-function requestStatboticsAPI(url) {
+async function requestStatboticsAPI(url) {
 	return fetch(url)
 		.then((response) => {
 			if (!response.ok) {

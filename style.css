@@ -99,7 +99,8 @@ select {
 .widget,
 .stat_widget,
 .graph_widget,
-.number_widget {
+.number_widget,
+.inner_graph {
 	width: 98.5%;
 	height: 87.5%;
 
@@ -131,6 +132,15 @@ select {
 
 .stat_widget {
 	border-radius: 2vh;
+}
+
+.inner_graph {
+	height: calc(100% - 25px);
+	width: calc(100% - 25px);
+
+	background-color: var(--color1);
+
+	border-radius: 1vh;
 }
 
 @media (orientation: landscape) {
