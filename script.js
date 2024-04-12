@@ -10,6 +10,8 @@ let option_template;
 let new_option;
 let current_data;
 
+let scouting_data;
+
 const APIKey =
 	"UVsAfK9zInMmgPxhfmdEvqPThM51zgyZL7sP6mLFRTPAZtvzbwFyL6yifjbnvcbU";
 
@@ -38,22 +40,6 @@ async function requestBlueAllianceAPI(url, apiKey) {
 	}
 }
 
-async function requestStatboticsAPI(url) {
-	return fetch(url)
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-			return response.json(); // Parse JSON data
-		})
-		.then((data) => {
-			return data;
-		})
-		.catch((error) => {
-			console.error(`${url} had a problem.`, error);
-		});
-}
-
 function addEventsToList(event) {
 	new_option = option_template.cloneNode();
 	new_option.id = index;
@@ -72,6 +58,7 @@ function resetStats() {
 
 // Function to fetch team information from Blue Alliance API
 async function fetchTeamInfo() {
+	updateScoutingData();
 	// API endpoint for team information
 	const team_info_url = `https://www.thebluealliance.com/api/v3/team/frc${team_number}`;
 	const team_events_url = `https://www.thebluealliance.com/api/v3/team/frc${team_number}/events/${year}`;
@@ -157,6 +144,11 @@ async function fetchEventInfo() {
 	}
 }
 
+async function updateScoutingData() {
+	//connectAndQuery()
+}
+
+updateScoutingData();
 team_number_element.addEventListener("keypress", function (e) {
 	if (e.code == "Enter") {
 		team_number = team_number_element.value;
