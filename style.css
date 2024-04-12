@@ -1,0 +1,225 @@
+:root {
+	--bg-color: #1e1e1e;
+	--color1: #252526;
+	--color2: #2d2d30;
+	--outline-color: #3e3e42;
+	--text-main-color: #fff;
+	--text-second-color: #969696;
+}
+
+html {
+	height: 100vh;
+	width: 100vw;
+	background-color: var(--bg-color);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+body,
+.full_box {
+	height: var(--max-size-h);
+	width: var(--max-size-w);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+input {
+	border: unset;
+
+	height: 82.5%;
+	width: 25vw;
+
+	background-color: var(--color1);
+
+	margin-right: 10%;
+	text-align: center;
+
+	border-radius: 100vh;
+	outline-width: 2px;
+	outline-color: var(--outline-color);
+	outline-style: solid;
+
+	color: var(--text-main-color);
+	font-weight: bold;
+	font-size: 40px;
+	font-family: Courier New;
+}
+
+select {
+	border: unset;
+
+	height: 20%;
+	max-width: 100%;
+
+	margin-bottom: 2vh;
+
+	background-color: var(--color2);
+
+	color: var(--text-main-color);
+	font-size: 15px;
+	font-family: Courier New;
+
+	border-radius: 100vh;
+	outline-width: 2px;
+	outline-color: var(--outline-color);
+	outline-style: solid;
+}
+
+.team_name_text,
+.stat_num {
+	color: var(--text-main-color);
+	font-size: 5vh;
+	font-family: Courier New;
+}
+
+.info_label {
+	color: var(--text-second-color);
+	font-family: Courier New;
+}
+
+.box,
+.top_box,
+.bottom_box,
+.stat_box,
+.graph_box {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.widget,
+.stat_widget,
+.graph_widget,
+.number_widget {
+	width: 98.5%;
+	height: 87.5%;
+
+	background-color: var(--color2);
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	border-radius: 100vh;
+	outline-width: 2px;
+	outline-color: var(--outline-color);
+	outline-style: solid;
+}
+
+.number_widget {
+	width: 60%;
+	height: 50%;
+
+	background-color: var(--color1);
+
+	text-align: center;
+}
+
+.graph_widget {
+	border-radius: 2vh;
+}
+
+.stat_widget {
+	border-radius: 2vh;
+}
+
+@media (orientation: landscape) {
+	:root {
+		--max-size-w: 95vw;
+		--max-size-h: 90vh;
+	}
+
+	.stat_num {
+		font-size: 6vh;
+	}
+
+	.info_label {
+		font-size: 3vh;
+	}
+
+	.widget {
+		border-radius: 100vw;
+	}
+
+	.stat_widget {
+		flex-direction: column;
+		width: 97%;
+	}
+
+	.graph_widget {
+		width: 97%;
+	}
+
+	.number_widget {
+		padding-top: 0.5vh;
+		width: 85%;
+	}
+
+	.bottom_box {
+		flex-direction: row;
+	}
+
+	.stat_box {
+		justify-content: left;
+		width: 33%;
+	}
+
+	.graph_box {
+		justify-content: right;
+	}
+}
+
+@media (orientation: portrait) {
+	:root {
+		--max-size-w: 95vw;
+		--max-size-h: 95vh;
+	}
+
+	.stat_num {
+		font-size: 5vw;
+	}
+
+	.info_label {
+		font-size: 3vw;
+	}
+
+	.widget {
+		border-radius: 100vh;
+	}
+
+	.stat_widget {
+		flex-direction: row;
+		height: 95%;
+	}
+
+	.graph_widget {
+		height: 95%;
+	}
+
+	.number_widget {
+		padding-top: 0.5vw;
+	}
+
+	.bottom_box {
+		flex-direction: column;
+	}
+
+	.stat_box {
+		height: 25%;
+		align-items: start;
+	}
+
+	.graph_box {
+		align-items: end;
+	}
+}

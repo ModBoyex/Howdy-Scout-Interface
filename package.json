@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "lodash.findkey": "^4.6.0"
+  }
+}

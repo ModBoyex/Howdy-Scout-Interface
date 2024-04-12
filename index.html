@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="top_box" style="height: 25%; flex-direction: column;">
+    <select name="team_event_picker" id="team_event_picker">
+      <option>Team Events</option>
+    </select>
+  
+    <div class="widget" style="height: 10vh;">
+      <div class="box" style="justify-content: left;">
+        <div class="team_name_text" id="team_name" style="margin-left: 3vw;">Team Name</div>
+      </div>
+      <div class="box" style="width: 10%; height: 100%; justify-content: right;">
+        <input type="numeric" id="team_input" placeholder="9999"></input>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="bottom_box" style="height: 75%;">
+    <div class="stat_box">
+      <div class="stat_widget">
+        <div class="box" style="flex-direction: column;">
+          <div class="info_label">Rank:</div>
+          <div class="number_widget">
+            <div class="stat_num" id="team_rank">-</div>
+          </div>
+        </div>
+    
+        <div class="box" style="flex-direction: column;">
+          <div class="info_label">EPA:</div>
+          <div class="number_widget">
+            <div class="stat_num" id="team_epa">-</div>
+          </div>
+        </div>
+    
+        <div class="box" style="flex-direction: column;">
+          <div class="info_label">OPR:</div>
+          <div class="number_widget">
+            <div class="stat_num" id="team_opr">-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="graph_box">
+      <div class="graph_widget"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
