@@ -5,6 +5,8 @@
 	--outline-color: #3e3e42;
 	--text-main-color: #fff;
 	--text-second-color: #969696;
+
+	--font: monospace;
 }
 
 html {
@@ -47,7 +49,7 @@ input {
 	color: var(--text-main-color);
 	font-weight: bold;
 	font-size: 40px;
-	font-family: Courier New;
+	font-family: var(--font);
 }
 
 select {
@@ -62,7 +64,7 @@ select {
 
 	color: var(--text-main-color);
 	font-size: 15px;
-	font-family: Courier New;
+	font-family: var(--font);
 
 	border-radius: 100vh;
 	outline-width: 2px;
@@ -74,12 +76,12 @@ select {
 .stat_num {
 	color: var(--text-main-color);
 	font-size: 5vh;
-	font-family: Courier New;
+	font-family: var(--font);
 }
 
 .info_label {
 	color: var(--text-second-color);
-	font-family: Courier New;
+	font-family: var(--font);
 }
 
 .box,

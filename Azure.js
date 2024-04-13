@@ -22,7 +22,7 @@ connectAndQuery();
 
 async function connectAndQuery() {
 	try {
-		var poolConnection = sql.connect(config);
+		var poolConnection = await sql.connect(config);
 
 		console.log("Reading rows from the Table...");
 		var resultSet = await poolConnection.request().query(`

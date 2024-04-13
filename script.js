@@ -12,15 +12,15 @@ let current_data;
 
 let scouting_data;
 
-const APIKey =
-	"UVsAfK9zInMmgPxhfmdEvqPThM51zgyZL7sP6mLFRTPAZtvzbwFyL6yifjbnvcbU";
-
 var team_number_element = document.getElementById("team_input");
 var team_name_element = document.getElementById("team_name");
 var team_rank_element = document.getElementById("team_rank");
 var team_opr_element = document.getElementById("team_opr");
 var team_epa_element = document.getElementById("team_epa");
 var team_event_picker = document.getElementById("team_event_picker");
+
+const APIKey =
+	"UVsAfK9zInMmgPxhfmdEvqPThM51zgyZL7sP6mLFRTPAZtvzbwFyL6yifjbnvcbU";
 
 async function requestBlueAllianceAPI(url, apiKey) {
 	try {
@@ -145,10 +145,42 @@ async function fetchEventInfo() {
 }
 
 async function updateScoutingData() {
-	//connectAndQuery()
+	//TODO: put code here to get scouting data from website
+	return {
+		data: [
+			{
+				primary_key: "118-2024txcmp1_qm1-blue1-Saragh E",
+				frc_team: "118",
+				event_key: "2024txcmp1",
+				match_key: "2024txcmp1_qm1",
+				driver_station: "blue1",
+				comp_level: "qm",
+				match_number: 1,
+				auto_moved: "Yes", // important value
+				auto_amp: 0, // important value
+				auto_speaker: 2, // important value
+				auto_midfield_pickups: 1,
+				tele_amp: 3, // important value
+				tele_amp_miss: 0, // important value
+				tele_speaker: 2, // important value
+				tele_speaker_miss: 5, // important value
+				tele_trap: 1, // important value
+				tele_climb: "Climb", // important value
+				defender_rating: 0,
+				mech_failure: " ",
+				scouted_by: "Saragh E",
+				tele_assist: 4, // important value
+			},
+		],
+	};
 }
 
-updateScoutingData();
+function getTeamScoutData(team_num) {
+	return scouting_data.filter((matchData) => matchData.frc_team == team_num);
+	
+}
+
+scouting_data = updateScoutingData();
 team_number_element.addEventListener("keypress", function (e) {
 	if (e.code == "Enter") {
 		team_number = team_number_element.value;
