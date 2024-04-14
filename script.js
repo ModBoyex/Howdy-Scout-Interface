@@ -59,6 +59,7 @@ function resetStats() {
 // Function to fetch team information from Blue Alliance API
 async function fetchTeamInfo() {
 	updateScoutingData();
+	scouting_data = getTeamScoutData(team_number);
 	// API endpoint for team information
 	const team_info_url = `https://www.thebluealliance.com/api/v3/team/frc${team_number}`;
 	const team_events_url = `https://www.thebluealliance.com/api/v3/team/frc${team_number}/events/${year}`;
@@ -176,8 +177,7 @@ async function updateScoutingData() {
 }
 
 function getTeamScoutData(team_num) {
-	return scouting_data.filter((matchData) => matchData.frc_team == team_num);
-	
+	// return scouting_data.filter((matchData) => matchData.frc_team == team_num);
 }
 
 scouting_data = updateScoutingData();
