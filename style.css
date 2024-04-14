@@ -71,6 +71,11 @@ select {
 	outline-style: solid;
 }
 
+.clone {
+	width: 0px;
+	height: 0px;
+}
+
 .team_name_text,
 .stat_num {
 	color: var(--text-main-color);
@@ -143,7 +148,20 @@ select {
 
 	background-color: var(--color1);
 
-	border-radius: 1vh;
+	border-radius: 0vh;
+}
+
+.graph_outline {
+	width: 95%;
+	height: 95%;
+
+	border-left-color: #fff;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-bottom-color: #fff;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-left-radius: 1vh;
 }
 
 @media (orientation: landscape) {

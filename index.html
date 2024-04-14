@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width">
   <title>Howdy Scouting</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
 </head>
 
 <body>
-
   <div class="top_box" style="height: 20%; flex-direction: column;">
     <select name="team_event_picker" id="team_event_picker">
       <option>Team Events</option>
@@ -54,18 +54,21 @@
 
     <div class="graph_box">
       <div class="graph_widget">
-        <div class="inner_graph">
-          <div class="box" style="height: 10%;"></div>
-          <div class="box" style="height: 90%;">
-            <canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+        <div class="inner_graph" id="graph1">
+          <div class="box" style="height: 10%;">
+            <select id="stat_picker" style="height: 50%;">
+              <option>Pick Stat</option>
+            </select>
           </div>
+          <div id="graph"></div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="clone"></div>
+
   <script src="script.js"></script>
-  <script scr="graph.js"></script>
 </body>
 
 </html>
