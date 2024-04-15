@@ -273,10 +273,10 @@ function setup_graph(scouting_data) {
         width: container.offsetWidth,
         height: container.offsetHeight * 0.9,
         margin: {
-            l: 45,
-            r: 45,
+            l: 30,
+            r: 5,
             b: 45,
-            t: 45,
+            t: 5,
             pad: 4,
         },
         paper_bgcolor: "#252526",

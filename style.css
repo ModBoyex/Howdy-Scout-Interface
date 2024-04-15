@@ -1,10 +1,13 @@
 :root {
+	--bg-color-hover: #191919;
 	--bg-color: #1e1e1e;
 	--color1: #252526;
 	--color2: #2d2d30;
 	--outline-color: #3e3e42;
 	--text-main-color: #fff;
 	--text-second-color: #969696;
+
+	--spacing: 25px;
 
 	--font: monospace;
 }
@@ -47,28 +50,61 @@ input {
 
 	color: var(--text-main-color);
 	font-weight: bold;
-	font-size: 7.5vh;
+	font-size: var(--font-size-l);
 	font-family: var(--font);
 }
 
 select {
-	border: unset;
-
-	height: 20%;
-	max-width: 100%;
+	height: auto;
+	min-height: 20%;
+	max-width: calc(100% - calc(var(--spacing) * 2));
 
 	margin-bottom: 2vh;
 
 	background-color: var(--color2);
 
 	color: var(--text-main-color);
-	font-size: 15px;
+	font-size: var(--font-size-s);
 	font-family: var(--font);
 
+	border: unset;
 	border-radius: 100vh;
 	outline-width: 2px;
 	outline-color: var(--outline-color);
 	outline-style: solid;
+}
+
+a:link {
+	outline: none;
+	text-decoration: none;
+}
+
+a:visited {
+	outline: none;
+	text-decoration: none;
+}
+
+a:hover {
+	outline: none;
+	text-decoration: none;
+}
+
+a:active {
+	outline: none;
+	text-decoration: none;
+}
+
+button {
+	width: 100%;
+	height:	100%;
+
+	background-color: transparent;
+
+	outline: none;
+
+	color: var(--text-main-color);
+	font-size: var(--font-size-m);
+	font-family: var(--font);
 }
 
 .clone {
@@ -79,12 +115,13 @@ select {
 .team_name_text,
 .stat_num {
 	color: var(--text-main-color);
-	font-size: 6vh;
+	font-size: var(--font-size-m);
 	font-family: var(--font);
 }
 
 .info_label {
 	color: var(--text-second-color);
+	font-size: var(--font-size-s);
 	font-family: var(--font);
 }
 
@@ -106,7 +143,8 @@ select {
 .stat_widget,
 .graph_widget,
 .number_widget,
-.inner_graph {
+.inner_graph,
+.compair_widget {
 	width: 100%;
 	height: 100%;
 
@@ -123,6 +161,10 @@ select {
 	outline-style: solid;
 }
 
+.compair_widget {
+	border-radius: var(--radius-s);
+}
+
 .number_widget {
 	width: 60%;
 	height: 50%;
@@ -133,11 +175,11 @@ select {
 }
 
 .graph_widget {
-	border-radius: 2vh;
+	border-radius: var(--radius-s);
 }
 
 .stat_widget {
-	border-radius: 2vh;
+	border-radius: var(--radius-s);
 }
 
 .inner_graph {
@@ -155,11 +197,13 @@ select {
 	width: 100%;
 	height: 100%;
 
-	background-color: var(--color2);
+	border-bottom-width: 2px;
+	border-bottom-color: var(--outline-color);
+	border-bottom-style: solid;
 
-	border-width: 2px;
-	border-color: var(--outline-color);
-	border-style: solid;
+	color: var(--text-main-color);
+	font-size: var(--font-size-m);
+	font-family: var(--font);
 
 	display: flex;
 	flex-direction: row;
@@ -167,18 +211,21 @@ select {
 	align-items: center;
 }
 
+.menuButton:hover {
+	background-color: var(--bg-color-hover);
+}
+
 @media (orientation: landscape) {
 	:root {
-		--max-size-w: 98vw;
-		--max-size-h: 95vh;
+		--radius-s: 2vh;
+		
+		--font-size-s: 3vh;
+		--font-size-m: 5vh;
+		--font-size-l: 7vh;
 	}
 
-	.stat_num {
-		font-size: 6vh;
-	}
-
-	.info_label {
-		font-size: 3vh;
+	.menuButton {
+		font-size: var(--font-size-s);
 	}
 
 	.widget {
@@ -187,11 +234,13 @@ select {
 
 	.stat_widget {
 		flex-direction: column;
-		width: 97%;
 	}
 
-	.graph_widget {
-		width: 97%;
+	.graph_widget,
+	.stat_widget,
+	.compair_widget {
+		width: calc(100% - var(--spacing));
+		height: calc(100% - var(--spacing));
 	}
 
 	.number_widget {
@@ -204,27 +253,17 @@ select {
 	}
 
 	.stat_box {
-		justify-content: left;
 		width: 33%;
-	}
-
-	.graph_box {
-		justify-content: right;
 	}
 }
 
 @media (orientation: portrait) {
 	:root {
-		--max-size-w: 95vw;
-		--max-size-h: 95vh;
-	}
-
-	.stat_num {
-		font-size: 5vw;
-	}
-
-	.info_label {
-		font-size: 3vw;
+		--radius-s: 2vw;
+		
+		--font-size-s: 3vw;
+		--font-size-m: 5vw;
+		--font-size-l: 8vw;
 	}
 
 	.widget {
@@ -233,11 +272,15 @@ select {
 
 	.stat_widget {
 		flex-direction: row;
-		height: 95%;
+		width: calc(100% - calc(var(--spacing) / 2));
+		height: calc(100% - var(--spacing));
 	}
 
-	.graph_widget {
-		height: 95%;
+	.graph_widget, 
+	.compair_widget {
+		margin-bottom: calc(var(--spacing) / 2);
+		width: calc(100% - calc(var(--spacing) / 2));
+		height: calc(100% - calc(var(--spacing) / 2));
 	}
 
 	.number_widget {
@@ -250,10 +293,5 @@ select {
 
 	.stat_box {
 		height: 25%;
-		align-items: start;
-	}
-
-	.graph_box {
-		align-items: end;
 	}
 }
