@@ -1,18 +1,19 @@
 async function requestAPI(url, apiKey) {
-	try {
-		const response = await fetch(url, {headers: {"X-TBA-Auth-Key": apiKey}});
+  try {
+    const response = await fetch(url, {
+      headers: { "X-TBA-Auth-Key": apiKey },
+    });
 
-		if (!response.ok) {
-			throw new Error("Network response was not ok");
-		}
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
 
-		const data = await response.json();
-		return data; // Return the data directly
-
-	} catch (error) {
-		console.error(`${url} had a problem.`, error);
-		throw error; // Re-throw the error to propagate it to the caller
-	}
+    const data = await response.json();
+    return data; // Return the data directly
+  } catch (error) {
+    console.error(`${url} had a problem.`, error);
+    throw error; // Re-throw the error to propagate it to the caller
+  }
 }
 
 function resetStats() {
@@ -22,13 +23,13 @@ function resetStats() {
 }
 
 function addEventsToList(event) {
-	new_option = option_template.cloneNode();
-	new_option.id = index;
-	new_option.textContent = event.name;
-	new_option.value = event.key;
-	team_event_picker.appendChild(new_option);
+  new_option = option_template.cloneNode();
+  new_option.id = index;
+  new_option.textContent = event.name;
+  new_option.value = event.key;
+  team_event_picker.appendChild(new_option);
 
-	index += 1;
+  index += 1;
 }
 
 // Function to fetch team information from Blue Alliance API
@@ -92,8 +93,8 @@ async function fetchEventInfo() {
     team_rank_element.textContent = "N/A";
   } else {
     ranking = current_data.rankings.find(
-        (rank) => rank.team_key === `frc${team_number}`, )
-      .rank;
+      (rank) => rank.team_key === `frc${team_number}`,
+    ).rank;
     team_rank_element.textContent = `${ranking}`;
   }
 

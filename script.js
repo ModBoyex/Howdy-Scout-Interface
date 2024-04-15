@@ -20,19 +20,20 @@ var stat_picker = document.getElementById("stat_picker");
 
 const currentDate = new Date();
 const year = currentDate.getFullYear();
-const APIKey = "UVsAfK9zInMmgPxhfmdEvqPThM51zgyZL7sP6mLFRTPAZtvzbwFyL6yifjbnvcbU";
+const APIKey =
+	"UVsAfK9zInMmgPxhfmdEvqPThM51zgyZL7sP6mLFRTPAZtvzbwFyL6yifjbnvcbU";
 
 setupStatPicker();
-team_number_element.addEventListener("keypress", function(e) {
-  if (e.code == "Enter") {
-    team_number = team_number_element.value;
-    fetchTeamInfo();
-  }
+team_number_element.addEventListener("keypress", function (e) {
+	if (e.code == "Enter") {
+		team_number = team_number_element.value;
+		fetchTeamInfo();
+	}
 });
 
 team_event_picker.onchange = fetchEventInfo;
 stat_picker.onchange = updateStatGraph;
 
-window.onresize = function() {
-  setup_graph(scouting_data);
-}
+window.onresize = function () {
+	setup_graph(scouting_data);
+};
