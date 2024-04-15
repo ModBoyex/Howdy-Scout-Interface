@@ -151,19 +151,6 @@ select {
 	border-radius: 0vh;
 }
 
-.graph_outline {
-	width: 95%;
-	height: 95%;
-
-	border-left-color: #fff;
-	border-left-style: solid;
-	border-left-width: 1px;
-	border-bottom-color: #fff;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-bottom-left-radius: 1vh;
-}
-
 @media (orientation: landscape) {
 	:root {
 		--max-size-w: 98vw;

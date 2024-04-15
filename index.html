@@ -7,12 +7,14 @@
   <title>Howdy Scouting</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
+  <script src="APIInterface.js" charset="utf-8"></script>
+  <script src="ScoutingData.js" charset="utf-8"></script>
 </head>
 
 <body>
   <div class="top_box" style="height: 20%; flex-direction: column;">
     <select name="team_event_picker" id="team_event_picker">
-      <option>Team Events</option>
+      <option>None</option>
     </select>
 
     <div class="widget" style="height: 50%;">
@@ -57,7 +59,7 @@
         <div class="inner_graph" id="graph1">
           <div class="box" style="height: 10%;">
             <select id="stat_picker" style="height: 50%;">
-              <option>Pick Stat</option>
+              <option>None</option>
             </select>
           </div>
           <div id="graph"></div>
