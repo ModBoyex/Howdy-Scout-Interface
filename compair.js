@@ -11,67 +11,88 @@ let team1, team2;
 let team1_data, team2_data;
 
 async function main() {
-    function updateTeam1Data() {
-        console.log(valid_entries);
+	function calcDifs() {
+		for (let i = 1; i < compairWidget.children.length; i++) {
+			let child = compairWidget.children[i]
+			if (child.children[1] === "-" || child.children[2] === "-") {
+				child.children[3].textContent = "N/A"
+			} else {
+				child.children[3].textContent = Math.abs(child.children[1].textContent - child.children[2].textContent)
+				if (child.children[1].textContent > child.children[2].textContent) {
+					child.children[3].className = "hi_val";
+				} else if (child.children[1].textContent < child.children[2].textContent) {
+					child.children[3].className = "low_val";
+				} else {
+					child.children[3].className = "label";
+				}
+			}
+		}
+	}
+	
+	function updateTeam1Data() {
+		resetTableValues(1);
+		team1 = this.value;
+		team1_data = getTeamScoutData(team1);
 
-        resetTableValues();
-        team1 = this.value;
-        team1_data = getTeamScoutData(team1);
+		let avg_val = {};
+		for (let i = 0; i < team1_data.length; i++) {
+			for (let [key, val] of Object.entries(team1_data[i])) {
+				if (valid_entries.indexOf(key) !== -1) {
+					if (key in avg_val) {
+						avg_val[key].push(val);
+					} else {
+						avg_val[key] = [val];
+					}
+				}
+			}
+		}
 
-        let avg_val = {}
-        for (let i = 0; i < team1_data.length; i++) {
-            for (let [key, val] of Object.entries(team1_data[i])) {
-                console.log(valid_entries.indexOf(key) !== -1, key);
-                if (valid_entries.indexOf(key) !== -1) {
-                    if (key in avg_val) {
-                        avg_val[key].push(val);
-                    } else {
-                        avg_val[key] = [val];
-                    }
-                }
-            }
-        }
+		for (let [key, val] of Object.entries(avg_val)) {
+			let sum = 0;
 
-        for (let [key, val] of Object.entries(avg_val)) {
-            let sum = 0;
+			val.forEach(number => {
+					sum += number;
+			});
+			avg_val[key] = (sum / val.length);
+		}
 
-            val.forEach(number => {
-                sum += number;
-            });
-            avg_val[key] = (sum / val.length);
-        }
+		for (let i = 1; i < compairWidget.children.length; i++) {
+			compairWidget.children[i].children[1].textContent = avg_val[compairWidget.children[i].children[0].textContent];
+		}
 
-        console.log(avg_val);
-    }
+		calcDifs();
+	}
 
-    function updateTeam2Data() {
-        resetTableValues();
-        team2 = this.value;
-        team2_data = getTeamScoutData(team2);
-        console.log(team2_data);
-    }
+	function updateTeam2Data() {
+		resetTableValues();
+		team2 = this.value;
+		team2_data = getTeamScoutData(team2);
+		console.log(team2_data);
+	}
 
-    async function resetTableValues() {
-        for (let i = 1; i < valueRows.length; i++) {
-            valueRows[i].children[0].textContent = "-";
-            valueRows[i].children[1].textContent = "-";
-            valueRows[i].children[2].textContent = "-";
-            valueRows[i].children[3].textContent = "-";
-            valueRows[i].children[3].className = "label";
-        }
+	async function resetTableValues(column) {
+		for (let i = 1; i < valueRows.length; i++) {
+			valueRows[i].children[column].textContent = "-";
+			valueRows[i].children[column].className = "label";
+		}
+	}
+	await resetTableValues(0);
+	await resetTableValues(1);
+	await resetTableValues(2);
+	await resetTableValues(3);
+	scouting_data = await updateScoutingData();
+	valid_entries = await getEntries();
 
-        scouting_data = await updateScoutingData();
-        valid_entries = await getEntries();
-    }
-    await resetTableValues();
+	for (let i = 1; i < valid_entries.length; i++) {
+		var clone = compairWidget.children[1].cloneNode(true);
+		clone.children[0].textContent = valid_entries[i];
+		clone.children[2].textContent = 1;
+		compairWidget.appendChild(clone);
+	}
+	compairWidget.children[1].remove();
 
-    console.log(valid_entries);
-    for (let i = 1; i < valid_entries.length; i++) {
-
-    }
-
-    team1_element.addEventListener("change", updateTeam1Data);
-    team2_element.addEventListener("change", updateTeam2Data);
+	team1_element.addEventListener("change", updateTeam1Data);
+	team2_element.addEventListener("change", updateTeam2Data);
 }
 
 main();
