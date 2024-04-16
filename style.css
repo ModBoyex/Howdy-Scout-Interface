@@ -1,30 +1,38 @@
+/* Variables */
 :root {
-	--bg-color-hover: #191919;
-	--bg-color: #1e1e1e;
-	--color1: #252526;
-	--color2: #2d2d30;
-	--outline-color: #3e3e42;
-	--text-main-color: #fff;
-	--text-second-color: #969696;
+    /* Colors */
+    --bg-color-hover: #191919;
+    --bg-color: #1e1e1e;
+    --color1: #252526;
+    --color2: #2d2d30;
+    --outline-color: #3e3e42;
+    --text-main-color: #fff;
+    --text-second-color: #969696;
 
-	--spacing: 25px;
+	--text-hi: rgb(93, 238, 93);
+	--text-low: rgb(138, 52, 52);
 
-	--font: monospace;
+    /* Spacing */
+    --spacing: 25px;
+
+    /* Font */
+    --font: monospace;
+
+    /* Font Sizes */
+    --font-size-xs: 1.5vh;
+    --font-size-s: 1.75vh;
+    --font-size-m: 2.5vh;
+    --font-size-l: 4vh;
+
+    /* Radius */
+    --radius-s: 2vw;
 }
 
-html {
-	height: 100vh;
-	width: 100vw;
-	background-color: var(--bg-color);
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
+html,
 body {
 	height: 100vh;
 	width: 100vw;
+	background-color: var(--bg-color);
 
 	display: flex;
 	flex-direction: column;
@@ -39,8 +47,7 @@ input {
 	width: 25vw;
 
 	background-color: var(--color1);
-
-	margin-right: 10px;
+	
 	text-align: center;
 
 	border-radius: 100vh;
@@ -113,10 +120,33 @@ button {
 }
 
 .team_name_text,
-.stat_num {
+.stat_num,
+.hi_val,
+.low_val,
+.label {
 	color: var(--text-main-color);
 	font-size: var(--font-size-m);
 	font-family: var(--font);
+}
+
+.hi_val,
+.low_val,
+.label {
+	width: 100%;
+	font-size: var(--font-size-xs);
+	text-align:center;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	justify-items: center;
+}
+
+.hi_val {
+	color: var(--text-hi);
+}
+
+.low_val {
+	color: var(--text-low);
 }
 
 .info_label {
@@ -163,6 +193,9 @@ button {
 
 .compair_widget {
 	border-radius: var(--radius-s);
+
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .number_widget {
@@ -215,10 +248,25 @@ button {
 	background-color: var(--bg-color-hover);
 }
 
+.value_row {
+	width: 98%;
+	height: 5%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+
+	border-bottom-color: var(--outline-color);
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+}
+
 @media (orientation: landscape) {
 	:root {
 		--radius-s: 2vh;
 		
+		--font-size-xs: 2vh;
 		--font-size-s: 3vh;
 		--font-size-m: 5vh;
 		--font-size-l: 7vh;
@@ -261,9 +309,10 @@ button {
 	:root {
 		--radius-s: 2vw;
 		
-		--font-size-s: 3vw;
-		--font-size-m: 5vw;
-		--font-size-l: 8vw;
+		--font-size-xs: 1.5vh;
+		--font-size-s: 1.75vh;
+		--font-size-m: 2.5vh;
+		--font-size-l: 4vh;
 	}
 
 	.widget {

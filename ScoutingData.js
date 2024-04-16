@@ -311,6 +311,16 @@ function updateStatGraph() {
     setup_graph(scouting_data);
 }
 
+async function getEntries() {
+    var key_list = [];
+    for (const [key, value] of Object.entries(scouting_data.data[0])) {
+        if (typeof value == typeof 0 && key != "match_number") {
+            key_list.push(key);
+        }
+    }
+    return key_list;
+}
+
 async function setupStatPicker() {
     scouting_data = await updateScoutingData();
     let clone = document.getElementsByTagName("option")[0].cloneNode();

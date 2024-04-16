@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Howdy Scouting</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
-</head>
-
-<body>
-  <div class="box" style="height: 5%;">
-    <a class="menuButton" href="index.html">Main Page</a>
-    <a class="menuButton" href="compair.html">Compair Page</a>
-  </div>
-  <div class="bottom_box">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Howdy Scouting</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" charset="utf-8"></script>
+    <script src="APIInterface.js" charset="utf-8"></script>
+    <script src="ScoutingData.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="box" style="height: 5%;">
+      <a class="menuButton" href="index.html">Main Page</a>
+      <a class="menuButton" href="compair.html">Compair Page</a>
+    </div>
+    <div class="bottom_box">
       <div class="box">
-        <div class="compair_widget"></div>
+        <div class="compair_widget">
+          <div class="value_row">
+            <div class="label" style="text-align: left;">Value Name:</div>
+            <div class="label">
+              <input type="numeric" id="team1" placeholder="99999" autocomplete="off" style="height: 90%; width: 50%; font-size: 1.5vw;"></input>
+            </div>
+            <div class="label">
+              <input type="numeric" id="team2" placeholder="99999" autocomplete="off" style="height: 90%; width: 50%; font-size: 1.5vw;"></input>
+            </div>
+            <div class="label">Dif:</div>
+          </div>
+          <div class="value_row" id="clone_row">
+            <div class="label" style="text-align: left;">Apple</div>
+            <div class="label">77</div>
+            <div class="label">50</div>
+            <div class="low_val">20%</div>
+          </div>
+        </div>
       </div>
       <div class="box">
         <div class="graph_widget">
-          <div class="inner_graph">
+          <div class="inner_graph"></div>
         </div>
       </div>
     </div>
-
     <script src="compair.js"></script>
-</body>
-
+  </body>
 </html>
