@@ -19,6 +19,7 @@
 	--font: monospace;
 
 	/* Font Sizes */
+	--font-size-label: 1vw;
 	--font-size-xs: 1.5vh;
 	--font-size-s: 1.75vh;
 	--font-size-m: 2.5vh;
@@ -120,6 +121,7 @@ button {
 }
 
 .team_name_text,
+.label_name,
 .stat_num,
 .hi_val,
 .low_val,
@@ -139,6 +141,10 @@ button {
 	align-content: center;
 	justify-content: center;
 	justify-items: center;
+}
+
+.label_name {
+	font-size: var(--font-size-label);
 }
 
 .hi_val {
@@ -250,16 +256,16 @@ button {
 
 .value_row {
 	width: 98%;
-	height: 5%;
+	height: 100%;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
 
-	border-bottom-color: var(--outline-color);
-	border-bottom-width: 2px;
-	border-bottom-style: solid;
+	border-top-color: var(--outline-color);
+	border-top-width: 2px;
+	border-top-style: solid;
 }
 
 @media (orientation: landscape) {
@@ -270,6 +276,10 @@ button {
 		--font-size-s: 3vh;
 		--font-size-m: 5vh;
 		--font-size-l: 7vh;
+	}
+
+	.label_name {
+		font-size: var(--font-size-label);
 	}
 
 	.menuButton {
@@ -315,6 +325,12 @@ button {
 		--font-size-l: 4vh;
 	}
 
+	.hi_val,
+	.low_val,
+	.label {
+		font-size: var(--font-size-xs);
+	}
+
 	.widget {
 		border-radius: 100vh;
 	}
@@ -327,7 +343,7 @@ button {
 
 	.graph_widget,
 	.compair_widget {
-		margin-bottom: calc(var(--spacing) / 2);
+		margin-top: calc(var(--spacing) / 2);
 		width: calc(100% - calc(var(--spacing) / 2));
 		height: calc(100% - calc(var(--spacing) / 2));
 	}

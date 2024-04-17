@@ -17,20 +17,18 @@ async function main() {
 			if (child.children[1] === "-" || child.children[2] === "-") {
 				child.children[3].textContent = "N/A";
 			} else {
-				let temp =
-					child.children[2].textContent - child.children[1].textContent;
-				temp = ((temp / child.children[1].textContent) * 100).toFixed(2);
+				let temp = Math.abs(child.children[2].textContent - child.children[1].textContent);
+				temp = ((temp / child.children[1].textContent) * 100).toFixed(1);
 				if (child.children[1].textContent > child.children[2].textContent) {
 					child.children[3].className = "hi_val";
-					temp = child.children;
-				} else if (
-					child.children[1].textContent < child.children[2].textContent
-				) {
+					temp = "+".concat(temp);
+				} else if (child.children[1].textContent < child.children[2].textContent) {
 					child.children[3].className = "low_val";
+					temp = "-".concat(temp);
 				} else {
 					child.children[3].className = "label";
 				}
-				child.children[3].textContent = temp;
+				child.children[3].textContent = temp.concat("%");
 			}
 		}
 	}
@@ -59,7 +57,7 @@ async function main() {
 			val.forEach((number) => {
 				sum += number;
 			});
-			avg_val[key] = sum / val.length;
+			avg_val[key] = (sum / val.length).toFixed(2);
 		}
 
 		for (let i = 1; i < compairWidget.children.length; i++) {
@@ -71,10 +69,38 @@ async function main() {
 	}
 
 	function updateTeam2Data() {
-		resetTableValues();
+		resetTableValues(2);
 		team2 = this.value;
 		team2_data = getTeamScoutData(team2);
-		console.log(team2_data);
+
+		let avg_val = {};
+		for (let i = 0; i < team2_data.length; i++) {
+			for (let [key, val] of Object.entries(team2_data[i])) {
+				if (valid_entries.indexOf(key) !== -1) {
+					if (key in avg_val) {
+						avg_val[key].push(val);
+					} else {
+						avg_val[key] = [val];
+					}
+				}
+			}
+		}
+
+		for (let [key, val] of Object.entries(avg_val)) {
+			let sum = 0;
+
+			val.forEach((number) => {
+				sum += number;
+			});
+			avg_val[key] = (sum / val.length).toFixed(2);
+		}
+
+		for (let i = 1; i < compairWidget.children.length; i++) {
+			compairWidget.children[i].children[2].textContent =
+				avg_val[compairWidget.children[i].children[0].textContent];
+		}
+
+		calcDifs();
 	}
 
 	async function resetTableValues(column) {
