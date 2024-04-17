@@ -1,31 +1,31 @@
 /* Variables */
 :root {
-    /* Colors */
-    --bg-color-hover: #191919;
-    --bg-color: #1e1e1e;
-    --color1: #252526;
-    --color2: #2d2d30;
-    --outline-color: #3e3e42;
-    --text-main-color: #fff;
-    --text-second-color: #969696;
+	/* Colors */
+	--bg-color-hover: #191919;
+	--bg-color: #1e1e1e;
+	--color1: #252526;
+	--color2: #2d2d30;
+	--outline-color: #3e3e42;
+	--text-main-color: #fff;
+	--text-second-color: #969696;
 
 	--text-hi: rgb(93, 238, 93);
 	--text-low: rgb(138, 52, 52);
 
-    /* Spacing */
-    --spacing: 25px;
+	/* Spacing */
+	--spacing: 25px;
 
-    /* Font */
-    --font: monospace;
+	/* Font */
+	--font: monospace;
 
-    /* Font Sizes */
-    --font-size-xs: 1.5vh;
-    --font-size-s: 1.75vh;
-    --font-size-m: 2.5vh;
-    --font-size-l: 4vh;
+	/* Font Sizes */
+	--font-size-xs: 1.5vh;
+	--font-size-s: 1.75vh;
+	--font-size-m: 2.5vh;
+	--font-size-l: 4vh;
 
-    /* Radius */
-    --radius-s: 2vw;
+	/* Radius */
+	--radius-s: 2vw;
 }
 
 html,
@@ -47,7 +47,7 @@ input {
 	width: 25vw;
 
 	background-color: var(--color1);
-	
+
 	text-align: center;
 
 	border-radius: 100vh;
@@ -103,7 +103,7 @@ a:active {
 
 button {
 	width: 100%;
-	height:	100%;
+	height: 100%;
 
 	background-color: transparent;
 
@@ -134,7 +134,7 @@ button {
 .label {
 	width: 100%;
 	font-size: var(--font-size-xs);
-	text-align:center;
+	text-align: center;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
@@ -265,7 +265,7 @@ button {
 @media (orientation: landscape) {
 	:root {
 		--radius-s: 2vh;
-		
+
 		--font-size-xs: 2vh;
 		--font-size-s: 3vh;
 		--font-size-m: 5vh;
@@ -308,7 +308,7 @@ button {
 @media (orientation: portrait) {
 	:root {
 		--radius-s: 2vw;
-		
+
 		--font-size-xs: 1.5vh;
 		--font-size-s: 1.75vh;
 		--font-size-m: 2.5vh;
@@ -325,7 +325,7 @@ button {
 		height: calc(100% - var(--spacing));
 	}
 
-	.graph_widget, 
+	.graph_widget,
 	.compair_widget {
 		margin-bottom: calc(var(--spacing) / 2);
 		width: calc(100% - calc(var(--spacing) / 2));

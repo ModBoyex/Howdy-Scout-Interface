@@ -7,7 +7,7 @@ let current_data;
 let scouting_data;
 let current_stat;
 
-var index = 1; 
+var index = 1;
 
 var team_number_element = document.getElementById("team_input");
 var team_name_element = document.getElementById("team_name");

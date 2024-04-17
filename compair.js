@@ -13,22 +13,28 @@ let team1_data, team2_data;
 async function main() {
 	function calcDifs() {
 		for (let i = 1; i < compairWidget.children.length; i++) {
-			let child = compairWidget.children[i]
+			let child = compairWidget.children[i];
 			if (child.children[1] === "-" || child.children[2] === "-") {
-				child.children[3].textContent = "N/A"
+				child.children[3].textContent = "N/A";
 			} else {
-				child.children[3].textContent = Math.abs(child.children[1].textContent - child.children[2].textContent)
+				let temp =
+					child.children[2].textContent - child.children[1].textContent;
+				temp = ((temp / child.children[1].textContent) * 100).toFixed(2);
 				if (child.children[1].textContent > child.children[2].textContent) {
 					child.children[3].className = "hi_val";
-				} else if (child.children[1].textContent < child.children[2].textContent) {
+					temp = child.children;
+				} else if (
+					child.children[1].textContent < child.children[2].textContent
+				) {
 					child.children[3].className = "low_val";
 				} else {
 					child.children[3].className = "label";
 				}
+				child.children[3].textContent = temp;
 			}
 		}
 	}
-	
+
 	function updateTeam1Data() {
 		resetTableValues(1);
 		team1 = this.value;
@@ -50,14 +56,15 @@ async function main() {
 		for (let [key, val] of Object.entries(avg_val)) {
 			let sum = 0;
 
-			val.forEach(number => {
-					sum += number;
+			val.forEach((number) => {
+				sum += number;
 			});
-			avg_val[key] = (sum / val.length);
+			avg_val[key] = sum / val.length;
 		}
 
 		for (let i = 1; i < compairWidget.children.length; i++) {
-			compairWidget.children[i].children[1].textContent = avg_val[compairWidget.children[i].children[0].textContent];
+			compairWidget.children[i].children[1].textContent =
+				avg_val[compairWidget.children[i].children[0].textContent];
 		}
 
 		calcDifs();
